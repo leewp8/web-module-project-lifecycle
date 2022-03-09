@@ -68,12 +68,12 @@ export default class App extends React.Component {
           <h2>To-do's:</h2>
           {
             this.state.todos.reduce((acc, td) => {
-              if (this.state,displayCompleteds) return acc.concat(td)
-              if (!td.completed) return acc.concat(td)
+              if (this.state.displayCompleteds || !td.completed) return acc.concat(
+                <div onClick={this.toggleCompleted(td.id)} key={td.id}>{td.name} {td.completed ? ' ✔️' : ''}</div>
+              )
+              return acc
             }, [])
-              // return <div onClick={this.toggleCompleted(td.id)} key={td.id}>{td.name} {td.completed ? ' ✔️' : ''}</div>
-            })
-          }
+            }
         </div>
         <form id="todoForm" onSubmit={this.onTodoFormSubmit}>
           <input value={this.state.todoNameInput} onChange={this.onTodoNameInputChange} type='text' placeholder='Type to-do'></input>
